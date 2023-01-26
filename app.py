@@ -27,7 +27,7 @@ def add_address():
 def get_products():
   all_addresses = Address.query.all()
   result = address_schema.dump(all_addresses)
-  return jsonify(result.data)
+  return jsonify(result)
 
 
 # Get Single address
