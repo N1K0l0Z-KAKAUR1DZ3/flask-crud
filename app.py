@@ -1,7 +1,7 @@
 from flask import request, jsonify, make_response
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token, jwt_required
-from database import app, db, Address, User, address_schema
+from database import app, db, Address, User, address_schema, addresses_schema
 
 
 # Create an address
@@ -24,9 +24,9 @@ def add_address():
 # Get All Addresses
 @app.route('/address', methods=['GET'])
 @jwt_required()
-def get_products():
+def get_addresses():
   all_addresses = Address.query.all()
-  result = address_schema.dump(all_addresses)
+  result = addresses_schema.dump(all_addresses)
   return jsonify(result)
 
 
